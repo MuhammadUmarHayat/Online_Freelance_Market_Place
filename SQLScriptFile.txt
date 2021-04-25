@@ -1,0 +1,105 @@
+﻿
+CREATE TABLE [dbo].[Accounts] (
+    [AccountNumber] NVARCHAR (50) NOT NULL,
+    [UserID]        NVARCHAR (50) NULL,
+    [Password]      NVARCHAR (50) NULL,
+    [usertype]      NVARCHAR (50) NULL,
+    [Amount]        INT           NULL,
+    [date]          DATE          NULL,
+    [status]        NVARCHAR (50) NULL,
+    [id]            INT           IDENTITY (1, 1) NOT NULL,
+    CONSTRAINT [PK_Accounts] PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+CREATE TABLE [dbo].[AssignProjects] (
+    [projectTitle] NVARCHAR (50) NOT NULL,
+    [FID]          NVARCHAR (50) NULL,
+    [ClientID]     NVARCHAR (50) NULL,
+    [Start_Date]   DATE          NULL,
+    [DueDate]      DATE          NULL,
+    [Status]       NVARCHAR (50) NULL,
+    [Duration]     NVARCHAR (50) NULL
+);
+
+CREATE TABLE [dbo].[Client_Projects] (
+    [ClientID]    NVARCHAR (50)  NULL,
+    [Category]    NVARCHAR (50)  NULL,
+    [Duration]    NVARCHAR (50)  NULL,
+    [Budget]      INT            NULL,
+    [Start_Date]  DATE           NULL,
+    [Tools]       NVARCHAR (500) NULL,
+    [Title]       NVARCHAR (50)  NOT NULL,
+    [Description] NVARCHAR (500) NULL,
+    [Status]      NVARCHAR (50)  NULL,
+    [Due_Date]    DATE           NULL,
+    PRIMARY KEY CLUSTERED ([Title] ASC)
+);
+
+CREATE TABLE [dbo].[Company_Account] (
+    [Id]            INT           NOT NULL,
+    [AccountNumber] NVARCHAR (50) NULL,
+    [ClientAccount] NVARCHAR (50) NULL,
+    [FAccount]      NVARCHAR (50) NULL,
+    [Amount]        INT           NULL,
+    [date]          DATE          NULL,
+    [Status]        NVARCHAR (50) NULL,
+    [Remarks]       NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[Freelancer_Bids] (
+    [BidID]        INT           IDENTITY (1, 1) NOT NULL,
+    [projectID]    NVARCHAR (50) NULL,
+    [amount]       INT           NULL,
+    [status]       NVARCHAR (50) NULL,
+    [Date]         DATE          NULL,
+    [FreelancerID] NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([BidID] ASC)
+);
+
+CREATE TABLE [dbo].[FreeLancer_Skills] (
+    [UserID]     NVARCHAR (50)  NULL,
+    [skill]      NVARCHAR (500) NULL,
+    [experience] NVARCHAR (500) NULL,
+    [Details]    NVARCHAR (500) NULL,
+    [date]       DATE           NULL
+);
+
+CREATE TABLE [dbo].[Project_Review] (
+    [Id]        INT           IDENTITY (1, 1) NOT NULL,
+    [ClientID]  NVARCHAR (50) NULL,
+    [FID]       NVARCHAR (50) NULL,
+    [ProjectID] NVARCHAR (50) NULL,
+    [Remakrs]   NVARCHAR (50) NULL,
+    [Stars]     INT           NULL,
+    [Rank]      INT           NULL,
+    [Status]    NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[UploadProjects] (
+    [Id]           INT            IDENTITY (1, 1) NOT NULL,
+    [projectTitle] NVARCHAR (50)  NULL,
+    [ClientID]     NVARCHAR (50)  NULL,
+    [FID]          NVARCHAR (50)  NULL,
+    [FileName]     NVARCHAR (50)  NULL,
+    [filePath]     NVARCHAR (300) NULL,
+    [date]         DATE           NULL,
+    [status]       NVARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[users] (
+    [userID]   NVARCHAR (50)  NOT NULL,
+    [Name]     NVARCHAR (50)  NULL,
+    [password] NVARCHAR (50)  NULL,
+    [Address]  NVARCHAR (MAX) NULL,
+    [Email]    NVARCHAR (50)  NULL,
+    [MobileNo] NVARCHAR (50)  NULL,
+    [userType] NVARCHAR (50)  NULL,
+    [status]   NVARCHAR (50)  NULL,
+    [photo]    NVARCHAR (MAX)  NULL,
+    PRIMARY KEY CLUSTERED ([userID] ASC)
+);
+
+
